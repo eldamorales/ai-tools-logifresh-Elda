@@ -4,8 +4,8 @@ Dashboard HTML interactivo para explorar el desempeño de 240 embarques sintéti
 
 **Responsable del material:** Dra. Elda C. Morales  
 **Identidad:** ELDA HACKS · Berries en Frío  
-**Repositorio previsto:** `https://github.com/eldamorales/ai-tools-logifresh-Elda`  
-**GitHub Pages previsto:** `https://eldamorales.github.io/ai-tools-logifresh-Elda/`
+**Repositorio público:** [github.com/eldamorales/ai-tools-logifresh-Elda](https://github.com/eldamorales/ai-tools-logifresh-Elda)  
+**Dashboard publicado:** [eldamorales.github.io/ai-tools-logifresh-Elda](https://eldamorales.github.io/ai-tools-logifresh-Elda/)
 
 ## Qué incluye
 
@@ -37,7 +37,6 @@ styles.css        Diseño responsive y branding
 data.js           Dataset sintético incorporado
 app.js            Cálculos, filtros, gráficas y tabla
 tests/             Pruebas reproducibles de datos y estructura
-evidencia/         Capturas de validación visual
 REPORTE_VALIDACION.md  Trazabilidad de calidad y pruebas
 .nojekyll         Publicación estática sin procesamiento Jekyll
 ```
@@ -91,6 +90,8 @@ Probar una intervención operativa acotada en rutas **Estándar**, que muestran 
 
 Se publica desde la rama `main`, carpeta raíz `/`, con `index.html` en la raíz y `.nojekyll`. GitHub recomienda publicar desde una rama cuando un sitio estático no necesita proceso de compilación y señala que la publicación puede tardar hasta 10 minutos.
 
+La URL pública se abrió y probó el 2 de septiembre de 2026. Se validaron la carga inicial, un filtro individual, dos filtros combinados, restablecimiento, estado sin resultados y vista móvil a 390 × 844. Las huellas SHA-256 de `index.html`, `styles.css`, `data.js` y `app.js` descargados desde GitHub Pages coincidieron con los archivos locales.
+
 ## Fuentes técnicas
 
 - GitHub Docs. [Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site). Consulta: 2 de septiembre de 2026.
@@ -99,4 +100,4 @@ Se publica desde la rama `main`, carpeta raíz `/`, con `index.html` en la raíz
 
 ## Privacidad y seguridad
 
-No se incluyen credenciales, tokens, datos personales ni el libro de trabajo original. El repositorio contiene únicamente el sitio estático, pruebas, documentación y capturas basadas en datos sintéticos.
+No se incluyen credenciales, tokens, datos personales ni el libro de trabajo original. El repositorio contiene únicamente el sitio estático, pruebas y documentación basados en datos sintéticos.
