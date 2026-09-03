@@ -78,9 +78,9 @@ Los 15 importes distintos de cero suman $882,549 MXN. La discrepancia no es redo
 
 ## 6. Evidencia visual
 
-- [Vista de escritorio sin filtros](./evidencia/dashboard-escritorio.jpg)
-- [Vista con Producto = Berries y Tipo de ruta = Prioritaria](./evidencia/dashboard-dos-filtros.jpg)
-- [Vista móvil a 390 × 844](./evidencia/dashboard-movil.jpg)
+- Vista de escritorio sin filtros: archivo local `evidencia/dashboard-escritorio.jpg`.
+- Vista con Producto = Berries y Tipo de ruta = Prioritaria: archivo local `evidencia/dashboard-dos-filtros.jpg`.
+- Vista móvil a 390 × 844: archivo local `evidencia/dashboard-movil.jpg`.
 
 Las capturas se conservan en la copia local de auditoría. La evidencia pública reproducible está formada por este reporte, `tests/test-data.mjs` y la verificación directa de la URL publicada.
 
