@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dashboard ejecutivo de datos sintéticos de LogiFresh México: SLA, retrasos, incidentes, temperatura, reclamaciones y satisfacción.">
+  <title>LogiFresh México | Dashboard ejecutivo</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23be2f62'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-size='20' font-family='Arial' font-weight='700' fill='white'%3EEH%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="brand-lockup" aria-label="Elda HACKS, Berries en Frío">
+      <span class="brand-mark" aria-hidden="true">EH</span>
+      <div><strong>ELDA HACKS</strong><span>Berries en Frío</span></div>
+    </div>
+    <div class="header-copy">
+      <p class="eyebrow">LogiFresh México · Control ejecutivo</p>
+      <h1>Cadena fría: servicio, excepciones e impacto</h1>
+      <p class="lede">Vista para priorizar un piloto operativo de 30 días sin atribuir causalidad a asociaciones observadas.</p>
+      <div class="meta-row" aria-label="Metadatos de la fuente">
+        <span>Periodo: 1 abr–28 jun 2026</span>
+        <span>Fuente: datos sintéticos</span>
+        <span>Actualización: 2 sep 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="page-shell">
+    <section class="quality-alert" aria-labelledby="quality-title">
+      <div class="alert-icon" aria-hidden="true">!</div>
+      <div>
+        <h2 id="quality-title">Control de calidad pendiente de conciliación</h2>
+        <p>Las 240 filas suman <strong>$882,549 MXN</strong> en reclamaciones; la hoja de control indica <strong>$882,649 MXN</strong>. Diferencia: <strong>$100 MXN</strong>. El dashboard muestra el valor calculado desde los datos y no altera la fuente.</p>
+      </div>
+    </section>
+
+    <section class="filter-panel" aria-labelledby="filters-title">
+      <div class="section-heading compact">
+        <div>
+          <p class="section-kicker">Explorar</p>
+          <h2 id="filters-title">Filtros globales</h2>
+        </div>
+        <button id="reset-filters" class="button secondary" type="button">Restablecer filtros</button>
+      </div>
+      <div id="filters" class="filter-grid"></div>
+      <p id="filter-status" class="filter-status" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Panorama</p>
+          <h2 id="overview-title">Desempeño de la selección</h2>
+        </div>
+        <p class="scope-note">Todos los indicadores usan la misma población filtrada.</p>
+      </div>
+      <div id="kpi-grid" class="kpi-grid"></div>
+    </section>
+
+    <section id="empty-state" class="empty-state" hidden aria-live="assertive">
+      <h2>La combinación no devuelve embarques</h2>
+      <p>Quite uno o más filtros o restablezca la vista. No se calculan promedios con una población vacía.</p>
+      <button class="button primary" type="button" data-reset>Restablecer filtros</button>
+    </section>
+
+    <div id="analysis-content">
+      <section class="chart-grid" aria-label="Evolución y segmentos">
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div><p class="section-kicker">Evolución</p><h2>SLA por mes</h2></div>
+            <span class="target-badge">Meta SLA: 90%</span>
+          </div>
+          <div id="trend-chart" class="chart" aria-live="polite"></div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-heading wrap">
+            <div><p class="section-kicker">Comparación</p><h2>SLA por segmento</h2></div>
+            <label class="inline-control">Dimensión
+              <select id="segment-dimension">
+                <option value="producto">Producto</option>
+                <option value="origen">Origen</option>
+                <option value="destino">Destino</option>
+                <option value="transportista">Transportista</option>
+                <option value="tipo_ruta">Tipo de ruta</option>
+              </select>
+            </label>
+          </div>
+          <div id="segment-chart" class="chart" aria-live="polite"></div>
+        </article>
+      </section>
+
+      <section class="chart-grid" aria-label="Incidentes e impacto económico">
+        <article class="panel chart-panel">
+          <div class="panel-heading"><div><p class="section-kicker">Frecuencia</p><h2>Incidentes registrados</h2></div><span class="unit-label">embarques</span></div>
+          <div id="incident-chart" class="chart" aria-live="polite"></div>
+        </article>
+        <article class="panel chart-panel">
+          <div class="panel-heading"><div><p class="section-kicker">Impacto</p><h2>Reclamaciones por incidente</h2></div><span class="unit-label">MXN</span></div>
+          <div id="claims-chart" class="chart" aria-live="polite"></div>
+        </article>
+      </section>
+
+      <section class="interpretation" aria-labelledby="interpretation-title">
+        <div class="section-heading">
+          <div><p class="section-kicker">Decisión</p><h2 id="interpretation-title">Hechos, hipótesis y próximo paso</h2></div>
+        </div>
+        <div class="interpretation-grid">
+          <article class="insight-card fact"><span class="card-label">Hechos</span><div id="facts"></div></article>
+          <article class="insight-card hypothesis"><span class="card-label">Hipótesis por validar</span><div id="hypotheses"></div></article>
+          <article class="insight-card next"><span class="card-label">Próximo paso · piloto 30 días</span><div id="next-step"></div></article>
+        </div>
+      </section>
+
+      <section class="panel detail-panel" aria-labelledby="detail-title">
+        <div class="panel-heading wrap">
+          <div><p class="section-kicker">Trazabilidad</p><h2 id="detail-title">Detalle de embarques</h2></div>
+          <label class="inline-control">Buscar embarque
+            <input id="record-search" type="search" placeholder="Ej. LF-0185" autocomplete="off">
+          </label>
+        </div>
+        <p id="table-caption" class="table-caption"></p>
+        <div class="table-wrap" tabindex="0" aria-label="Tabla desplazable de embarques filtrados">
+          <table>
+            <thead><tr><th>ID</th><th>Fecha</th><th>Ruta</th><th>Producto</th><th>SLA</th><th>Retraso</th><th>Incidente</th><th>Temp. máx.</th><th>Reclamación</th></tr></thead>
+            <tbody id="detail-body"></tbody>
+          </table>
+        </div>
+        <button id="show-more" class="button secondary table-action" type="button">Mostrar 25 más</button>
+      </section>
+    </div>
+
+    <section class="method-panel" aria-labelledby="method-title">
+      <div class="section-heading"><div><p class="section-kicker">Metodología</p><h2 id="method-title">Definiciones y límites</h2></div></div>
+      <div class="method-grid">
+        <div><h3>SLA</h3><p>Porcentaje de embarques con <em>Cumple</em> sobre el total filtrado. Meta de referencia: 90%.</p></div>
+        <div><h3>Retraso</h3><p>Promedio simple de minutos únicamente entre embarques con <code>retraso_min &gt; 0</code>.</p></div>
+        <div><h3>Incidentes</h3><p>Conteo de registros cuya categoría no es <em>Sin incidente</em>. La categoría no prueba la causa del retraso.</p></div>
+        <div><h3>Temperatura</h3><p>Conteo de embarques marcados <em>Sí</em> en excursión mayor a 8 °C.</p></div>
+        <div><h3>Reclamaciones</h3><p>Suma de <code>reclamacion_mxn</code> en MXN. Existe una diferencia de $100 frente al valor de control.</p></div>
+        <div><h3>Limitaciones</h3><p>Datos sintéticos, periodo corto y patrones temporales artificiales. Faltan causa raíz, tiempos por etapa, condiciones externas y costo de intervención.</p></div>
+      </div>
+      <p class="source-note">Fuente: <strong>Datos_sinteticos_LogiFresh_dashboard.xlsx</strong>, hojas <em>Datos</em> y <em>Diccionario_y_control</em>. Cálculos ejecutados en el navegador. Responsable del material: Dra. Elda C. Morales.</p>
+    </section>
+  </main>
+
+  <footer><span>ELDA HACKS · Berries en Frío</span><span>Dashboard educativo con información sintética</span></footer>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
