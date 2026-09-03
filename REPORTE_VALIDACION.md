@@ -74,13 +74,27 @@ Los 15 importes distintos de cero suman $882,549 MXN. La discrepancia no es redo
 | Escritorio | 8 filtros, 8 KPI, 4 gráficas legibles | Confirmado a 1280 × 720 | Pasa |
 | Móvil | Reflujo sin reducir toda la interfaz | Confirmado a 390 × 844; una columna | Pasa |
 | Accesibilidad básica | H1 único, regiones, etiquetas, foco visible, `aria-live`, texto equivalente | Estructura semántica y controles nativos confirmados | Pasa |
-| Publicación | URL pública y recursos HTTP correctos | Pendiente de autorización | Pendiente |
+| Publicación | URL pública y recursos HTTP correctos | URL responde; HTML, CSS y JS descargados; SHA-256 idénticos a la copia local | Pasa |
 
 ## 6. Evidencia visual
 
 - [Vista de escritorio sin filtros](./evidencia/dashboard-escritorio.jpg)
 - [Vista con Producto = Berries y Tipo de ruta = Prioritaria](./evidencia/dashboard-dos-filtros.jpg)
 - [Vista móvil a 390 × 844](./evidencia/dashboard-movil.jpg)
+
+Las capturas se conservan en la copia local de auditoría. La evidencia pública reproducible está formada por este reporte, `tests/test-data.mjs` y la verificación directa de la URL publicada.
+
+### Pruebas sobre la URL pública
+
+| Prueba | Esperado | Obtenido | Estado |
+|---|---|---|:---:|
+| Carga inicial | 240; 76.7%; 51.8 min; 52; 9; $882,549 observado; 8.5/10 | Coincide en los ocho KPI | Pasa |
+| Filtro Berries | 48 embarques y actualización integral | 48; 75%; 49.2 min; 10; 2; $119,400; 8.5/10; 4 gráficas | Pasa |
+| Berries + Prioritaria | 16 embarques | 16; 75%; 52.5 min; 3; 0; $0; 8.5/10; 16 filas | Pasa |
+| Restablecer | Volver a 240 | 240 y KPI iniciales restaurados | Pasa |
+| CDMX + Tijuana | 0 y estado sin datos | Mensaje visible; análisis oculto; sin promedios engañosos | Pasa |
+| Vista móvil | 390 × 844 con componentes visibles | H1, filtros y cuatro gráficas presentes | Pasa |
+| Integridad de recursos | HTML, CSS, datos y lógica idénticos | Cuatro pares de SHA-256 coincidentes | Pasa |
 
 ## 7. Correcciones realizadas
 
@@ -117,7 +131,13 @@ Seleccionar rutas Estándar comparables, estratificadas por producto. Aplicar pu
 
 ## 10. Estado de publicación
 
-La versión local está lista. La creación del repositorio público, el envío del contenido, la activación de GitHub Pages y las pruebas sobre la URL pública se ejecutarán únicamente después de la aprobación explícita de la Dra. Elda C. Morales.
+Publicación completada el 2 de septiembre de 2026, después de la aprobación explícita de la Dra. Elda C. Morales.
+
+- Repositorio: <https://github.com/eldamorales/ai-tools-logifresh-Elda>
+- GitHub Pages: <https://eldamorales.github.io/ai-tools-logifresh-Elda/>
+- Fuente de publicación: rama `main`, carpeta `/`.
+- HTTPS: obligatorio y activo en el dominio predeterminado de GitHub Pages.
+- Verificación: URL abierta con un navegador independiente; filtros, estado vacío, vista móvil y recursos propios comprobados.
 
 ## 11. Fuentes técnicas verificadas
 
